@@ -1,4 +1,4 @@
-<h3 align="center">Discord Webhook Spammer</h3>
+<h3 align="center">DZSA Script</h3>
 
 </div>
 
