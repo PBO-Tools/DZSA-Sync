@@ -1,9 +1,12 @@
-@ECHO OFF
-SET SERVERIP=104.143.3.62
-SET QUERYPORT=27016
+@echo off
+set "SERVERIP=YOURSERVERIP"
+set "QUERYPORT=YOURSERVERPORT"
 
 :START
-ECHO Querying Server %SERVERIP%:%QUERYPORT%
-powershell.exe -Command (new-object System.Net.WebClient).DownloadString('http://dayzsalauncher.com/api/v1/query/%SERVERIP%/%QUERYPORT%')
-TIMEOUT 120
-GOTO START
+echo Querying Server %SERVERIP%:%QUERYPORT%
+powershell.exe -Command "(New-Object System.Net.WebClient).DownloadString('http://dayzsalauncher.com/api/v1/query/%SERVERIP%/%QUERYPORT%')" || (
+    echo Error: Failed to query server.
+    timeout 5
+)
+timeout 120 >nul
+goto START
